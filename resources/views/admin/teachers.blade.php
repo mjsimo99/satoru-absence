@@ -1,4 +1,4 @@
-@include('navbarAdmin')
+@include('navbar')
 
 
 
@@ -13,8 +13,8 @@
 <div class="flex justify-center mt-[50px]">
     <a href="/" class="mx-5 bg-CustomBlue font-bold py-2 px-4 rounded">Admin</a>
     <a href="/atea" class="mx-5 bg-CustomBlue font-bold py-2 px-4 rounded">Teacher</a>
-    <a href="/astu" class="mx-5 bg-CustomBlue font-bold py-2 px-4 rounded">Student</a>
-    <a href="/amodule" class="mx-5 bg-CustomBlue font-bold py-2 px-4 rounded">Module</a>
+    <a href="astu" class="mx-5 bg-CustomBlue font-bold py-2 px-4 rounded">Student</a>
+    <a href="#" class="mx-5 bg-CustomBlue font-bold py-2 px-4 rounded">Module</a>
 </div>
 
 <div class="ml-64 mt-[50px]">

@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ExportController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\adminTeacherController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +20,13 @@ use App\Http\Controllers\adminController;
 */
 
 Route::resource('admin', adminController::class);
+Route::post('/admin/{id}/status', [AdminController::class, 'updateStatus'])->name('admin.updateStatus');
+Route::post('/adminTeacher/{id}/status', [adminTeacherController::class, 'updateStatus'])->name('adminTeacher.updateStatus');
 
-// Route::get('/', function () {
-//     return view('admin.admin');
-// });
+Route::resource('adminTeacher', adminTeacherController::class);
+
+
+
 Route::get('/atea', function () {
     return view('admin.teachers');
 });
