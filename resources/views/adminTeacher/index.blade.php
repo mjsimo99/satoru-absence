@@ -9,10 +9,10 @@
 
 
 <div class="flex justify-center mt-[50px]">
-    <a href="/admin" class="mx-5 bg-CustomBlue font-bold py-2 px-4 rounded">Admin</a>
-    <a href="/adminTeacher" class="mx-5 bg-CustomBlue font-bold py-2 px-4 rounded">Teacher</a>
-    <a href="/astu" class="mx-5 bg-CustomBlue font-bold py-2 px-4 rounded">Student</a>
-    <a href="/amodule" class="mx-5 bg-CustomBlue font-bold py-2 px-4 rounded">Module</a>
+    <a href="{{ route('admin.index')}} " class="mx-5 bg-CustomBlue font-bold py-2 px-4 rounded">Admin</a>
+    <a href="{{ route('adminTeacher.index')}} " class="mx-5 bg-CustomBlue font-bold py-2 px-4 rounded">Teacher</a>
+    <a href="{{ route('adminStudent.index')}}" class="mx-5 bg-CustomBlue font-bold py-2 px-4 rounded">Student</a>
+    <a href="{{ route('adminModul.index')}}" class="mx-5 bg-CustomBlue font-bold py-2 px-4 rounded">Module</a>
 </div>
 
 

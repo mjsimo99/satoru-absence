@@ -1,6 +1,11 @@
 @include('navbarStudent')
 
 
+{{-- @if(auth()->check()) --}}
+{{-- @endif --}}
+
+
+  
 
 
 
@@ -10,7 +15,7 @@
         Your Profile Mohamed !! 
     </h1>
 </div>
-
+@if(auth()->user()->student )
 <!-- component -->
 <div>
     <div class="rounded-tl-3xl rounded-tr-3xl overflow-hidden shadow-xl max-w-md my-3 bg-white-500 mx-auto mt-10">
@@ -19,8 +24,8 @@
           <img src="https://i.pinimg.com/originals/7a/30/f3/7a30f3c1af0844b1e6b6c51f674db909.jpg" class="rounded-full border-solid border-white border-2 -mt-3">		
         </div>
         <div class="text-center px-3 pb-6 pt-2">
-          <h3 class="text-sm bold font-sans text-black">Mohamed-Amine Majidi</h3>
-          <p class="mt-2 font-sans font-light text-black">mohashark21@gmail.com</p>
+          <p class="text-sm bold font-sans text-black">{{ auth()->user()->student->nom_etu }} {{ auth()->user()->student->prenom_etu }}</p>
+          <p class="mt-2 font-sans font-light text-black">{{ auth()->user()->email }}</p>
         </div>
         <div class="flex justify-center pb-3 text-white">
           <button class="w-36 h-10 bg-gray-900 rounded-full text-white hover:bg-gray-700" onclick="toggleCard()">More information</button>
@@ -65,7 +70,7 @@
                         End Time
                     </th>
                     <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                        ???
+                        type_seance
                     </th>
                     <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                         justify
@@ -78,87 +83,56 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach(auth()->user()->student->seances as $seance)
+                @foreach($seance->absence as $absence)
+
+
                 <tr>
                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <div class="flex items-center">
                             
                             <div class="ml-3">
                                 <p class="text-gray-900 whitespace-no-wrap">
-                                    Laravel
+                                    {{ $seance->module->name_modul }}
                                 </p>
                             </div>
                     </td>
                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        <p class="text-gray-900 whitespace-no-wrap">2023/04/04</p>
-                    </td>
-                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        <p class="text-gray-900 whitespace-no-wrap">
-                            09:30
+                        <p class="text-gray-900 whitespace-no-wrap">{{ $seance->date_seance }}
+
                         </p>
                     </td>
                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <p class="text-gray-900 whitespace-no-wrap">
-                            04:30
+                            {{ $seance->heure_debut }}
                         </p>
                     </td>
                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <p class="text-gray-900 whitespace-no-wrap">
-                           ?????
+                            {{ $seance->heure_fin }}
                         </p>
                     </td>
                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <p class="text-gray-900 whitespace-no-wrap">
-                           Yes
+                            {{ $seance->type_seance }}
                         </p>
                     </td>
                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <p class="text-gray-900 whitespace-no-wrap">
-                            Justification Success
+
+                            {{ $absence->justify }}
+                                
+                        </p>
+                    </td>
+                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <p class="text-gray-900 whitespace-no-wrap">
+                            {{ $absence->comm_abs }}
                         </p>
                     </td>
                 </tr>
-                <tr>
-                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        <div class="flex items-center">
-                            
-                            <div class="ml-3">
-                                <p class="text-gray-900 whitespace-no-wrap">
-                                    Laravel
-                                </p>
-                            </div>
-                    </td>
-                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        <p class="text-gray-900 whitespace-no-wrap">2023/04/04</p>
-                    </td>
-                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        <p class="text-gray-900 whitespace-no-wrap">
-                            09:30
-                        </p>
-                    </td>
-                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        <p class="text-gray-900 whitespace-no-wrap">
-                            04:30
-                        </p>
-                    </td>
-                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        <p class="text-gray-900 whitespace-no-wrap">
-                           ?????
-                        </p>
-                    </td>
-                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        <p class="text-gray-900 whitespace-no-wrap">
-                           Yes
-                        </p>
-                    </td>
-                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        <p class="text-gray-900 whitespace-no-wrap">
-                            Justification Success
-                        </p>
-                    </td>
-                </tr>
+                @endforeach
 
-
-
+                @endforeach
             </tbody>
         </table>
 
@@ -166,3 +140,4 @@
     
 
 </div>
+@endif

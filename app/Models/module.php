@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class modules extends Model
+class module extends Model
 {
     use HasFactory;
 
@@ -17,4 +17,8 @@ class modules extends Model
         'name_modul',
    
     ];
+    public function seances()
+    {
+        return $this->hasMany(seances::class, 'module_id');
+    }
 }

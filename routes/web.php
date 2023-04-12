@@ -7,6 +7,10 @@ use App\Http\Controllers\ExportController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\adminTeacherController;
+use App\Http\Controllers\adminStudentController;
+use App\Http\Controllers\adminModulController;
+use App\Http\Livewire\AdminModuleList;
+use App\Http\Controllers\studentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,24 +25,40 @@ use App\Http\Controllers\adminTeacherController;
 
 Route::resource('admin', adminController::class);
 Route::post('/admin/{id}/status', [AdminController::class, 'updateStatus'])->name('admin.updateStatus');
-Route::post('/adminTeacher/{id}/status', [adminTeacherController::class, 'updateStatus'])->name('adminTeacher.updateStatus');
 
 Route::resource('adminTeacher', adminTeacherController::class);
+Route::post('/adminTeacher/{id}/status', [adminTeacherController::class, 'updateStatus'])->name('adminTeacher.updateStatus');
+
+Route::resource('adminStudent', adminStudentController::class);
+Route::post('/adminStudent/{id}/status', [adminStudentController::class, 'updateStatus'])->name('adminStudent.updateStatus');
+
+Route::resource('adminModul', adminModulController::class);
 
 
 
-Route::get('/atea', function () {
-    return view('admin.teachers');
+
+
+
+
+
+
+
+
+Route::get('/admin-module-list', AdminModuleList::class);
+
+
+
+// Route::resource('students', studentController::class);
+
+
+
+Route::get('/students', function () {
+    return view('students.index');
 });
-Route::get('/astu', function () {
-    return view('admin.students');
-});
-Route::get('/amodule', function () {
-    return view('admin.module');
-});
-Route::get('/student', function () {
-    return view('students.profile');
-});
+
+
+
+// });
 Route::get('/teachers', function () {
     return view('teachers.science');
 });

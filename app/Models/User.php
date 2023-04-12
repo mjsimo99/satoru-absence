@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\admin;
+use App\Models\teacher;
+use App\Models\student;
 
 class User extends Authenticatable
 {
@@ -53,4 +55,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(teacher::class, 'user_id');
     }
+    public function student()
+    {
+        return $this->hasOne(student::class, 'user_id');
+    }
+    
 }
