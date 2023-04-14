@@ -5,12 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
-
-
 class teacher extends Model
 {
     use HasFactory;
+
     protected $table = 'teachers';
 
     protected $primaryKey = 'user_id';
@@ -24,11 +22,16 @@ class teacher extends Model
         'email_ens',
         'phone_ens',
     ];
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function affect()
+    {
+        return $this->hasMany(affect::class, 'id_user');
+    }
 
-    
+
 }

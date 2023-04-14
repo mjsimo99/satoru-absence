@@ -21,4 +21,8 @@ class module extends Model
     {
         return $this->hasMany(seances::class, 'module_id');
     }
+    public function affect()
+    {
+        return $this->hasMany(affect::class, 'id_module');
+    }
 }

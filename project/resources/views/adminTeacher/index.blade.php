@@ -118,6 +118,7 @@
                                 <span class="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
                                     <span aria-hidden class="absolute inset-0 bg-red-200 opacity-50 rounded-full"></span>
                                     <span class="relative">Inactive</span>
+                                </span>
                                 @endif
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -130,17 +131,17 @@
 
                                     <form action="{{ route('adminTeacher.updateStatus', $teacher->user->id) }}" method="POST"> @csrf
                                         <input type="hidden" name="status" value="1">
-                                        <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                                        <button type="submit" class="font-bold py-2 px-4 rounded">
                                             <svg class="w-[28px]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"></path>
                                             </svg>
                                         </button>
                                     </form>
                                     <form action="{{ route('adminTeacher.updateStatus', $teacher->user->id) }}" method="POST"> @csrf
                                         <input type="hidden" name="status" value="0">
-                                        <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                                        <button type="submit" class="font-bold py-2 px-4 rounded">
                                             <svg class="w-[28px]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M11.412 15.655L9.75 21.75l3.745-4.012M9.257 13.5H3.75l2.659-2.849m2.048-2.194L14.25 2.25 12 10.5h8.25l-4.707 5.043M8.457 8.457L3 3m5.457 5.457l7.086 7.086m0 0L21 21"></path>
                                             </svg>
                                         </button>
 

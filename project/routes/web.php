@@ -10,7 +10,8 @@ use App\Http\Controllers\adminTeacherController;
 use App\Http\Controllers\adminStudentController;
 use App\Http\Controllers\adminModulController;
 use App\Http\Livewire\AdminModuleList;
-use App\Http\Controllers\studentController;
+use App\Http\Controllers\affectController;
+use App\Http\Controllers\TeacherController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,8 @@ Route::post('/adminStudent/{id}/status', [adminStudentController::class, 'update
 Route::resource('adminModul', adminModulController::class);
 
 
+Route::resource('affects', affectController::class);
+// Route::resource('teachers', TeacherController::class);
 
 
 
@@ -59,9 +62,7 @@ Route::get('/students', function () {
 
 
 // });
-Route::get('/teachers', function () {
-    return view('teachers.science');
-});
+
 Route::get('/tabsence', function () {
     return view('teachers.absence');
 });

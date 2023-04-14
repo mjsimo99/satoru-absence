@@ -38,5 +38,6 @@ class seances extends Model
     }
 
 
+
     
 }
