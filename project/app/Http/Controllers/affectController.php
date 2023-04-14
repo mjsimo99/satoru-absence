@@ -11,12 +11,20 @@ class affectController extends Controller
     /**
      * Display a listing of the resource.
      */
+    //     public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
     public function index()
     {
-        $affects = affect::all();
-        $teachers = teacher::all();
+        $teacher = optional(auth()->user())->teacher; // get the logged-in teacher or null
+        if ($teacher) {
+            $affects = $teacher->affect()->with('module')->get(); // get the affected modules for the teacher
+        } else {
+            $affects = collect(); // create an empty collection if the user is not logged in or not a teacher
+        }
 
-        return view('teachers.index', compact('affects', 'teachers'));
+        return view('teachers.index', compact('affects'));
     }
 
     /**

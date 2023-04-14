@@ -9,66 +9,66 @@
 
 
 <div class="flex justify-evenly mt-[50px]">
-  <table class="table-auto border-collapse border border-gray-200 p-lg-4 w-[245px]">
-    <thead class="h-[70px]">
-        <tr>
-            <th class="bg-CustomWhite text-4xl font-bold">
-                Modules
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td class="flex justify-center">
-                <ol class="list-outside list-disc font-sans text-2xl">
-                    <li>JAVA</li>
-                    <li>PHP</li>
-                    <li>FIGMA</li>
-                </ol>  
-            </td>
-        </tr>
-        
-  </table>
-  <table class="table-auto border-collapse border border-gray-200 p-lg-4 w-[245px]">
-    <thead class="h-[70px]">
-        <tr>
-            <th class="bg-CustomWhite text-4xl font-bold">
-                Modules
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td class="flex justify-center">
-                <ol class="list-outside list-disc font-sans text-2xl">
-                    <li>JAVA</li>
-                    <li>PHP</li>
-                    <li>FIGMA</li>
-                </ol>  
-            </td>
-        </tr>
-        
-  </table>
-  <table class="table-auto border-collapse border border-gray-200 p-lg-4 w-[245px]">
-    <thead class="h-[70px]">
-        <tr>
-            <th class="bg-CustomWhite text-4xl font-bold">
-                Modules
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td class="flex justify-center">
-                <ol class="list-outside list-disc font-sans text-2xl">
-                    <li>JAVA</li>
-                    <li>PHP</li>
-                    <li>FIGMA</li>
-                </ol>  
-            </td>
-        </tr>
-        
-  </table>
+    <table class="table-auto border-collapse border border-gray-200 p-lg-4 w-[245px]">
+        <thead class="h-[70px]">
+            <tr>
+                <th class="bg-CustomWhite text-4xl font-bold">
+                    Modules
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="flex justify-center">
+                    <ol class="list-outside list-disc font-sans text-2xl">
+                        <li>JAVA</li>
+                        <li>PHP</li>
+                        <li>FIGMA</li>
+                    </ol>
+                </td>
+            </tr>
+
+    </table>
+    <table class="table-auto border-collapse border border-gray-200 p-lg-4 w-[245px]">
+        <thead class="h-[70px]">
+            <tr>
+                <th class="bg-CustomWhite text-4xl font-bold">
+                    Modules
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="flex justify-center">
+                    <ol class="list-outside list-disc font-sans text-2xl">
+                        <li>JAVA</li>
+                        <li>PHP</li>
+                        <li>FIGMA</li>
+                    </ol>
+                </td>
+            </tr>
+
+    </table>
+    <table class="table-auto border-collapse border border-gray-200 p-lg-4 w-[245px]">
+        <thead class="h-[70px]">
+            <tr>
+                <th class="bg-CustomWhite text-4xl font-bold">
+                    Modules
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="flex justify-center">
+                    <ol class="list-outside list-disc font-sans text-2xl">
+                        <li>JAVA</li>
+                        <li>PHP</li>
+                        <li>FIGMA</li>
+                    </ol>
+                </td>
+            </tr>
+
+    </table>
 </div>
 
 <div class="ml-64 mt-[50px]">
@@ -85,65 +85,70 @@
                 <table class="min-w-full leading-normal">
                     <thead>
                         <tr>
-                            <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                            <th
+                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                 Modules
                             </th>
-                            <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                            <th
+                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                 Class Time
                             </th>
-                            <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                            <th
+                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                 Start Time
                             </th>
-                            <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                            <th
+                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                 End Time
                             </th>
-                            <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                            <th
+                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                 ????
                             </th>
-            
+
 
 
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach($affects as $affect)
-{{-- {{ $affect->id_user }} --}}
-                    @if(auth()->user()->id == $affect->id_user)
+                        @foreach ($affects as $affect)
+                            @foreach ($affect->module->seances as $seance)
+                                @if ($affect->id_user == Auth::user()->id)
+                                    <tr>
+                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                            <div class="flex items-center">
+                                                <div class="ml-3">
+                                                    <p class="text-gray-900 whitespace-no-wrap">
+                                                        {{ $affect->module->name_modul }}
 
 
-                        <tr>
-                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <div class="flex items-center">
-                                    <div class="ml-3">
-                                        <p class="text-gray-900 whitespace-no-wrap">
-                                            {{$affect->module->name_modul}}
-                                            
-                                        </p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap">2023/02/20</p>
-                            </td>
-                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap">
-                                    09:00
-                                </p>
-                            </td>
-                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap">
-                                    10:00
-                                </p>
-                            </td>
-                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap">
-                                    ????????
-                                </p>
-                            </td>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                            <p class="text-gray-900 whitespace-no-wrap">{{ $seance->date_seance }}</p>
+                                        </td>
+                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                            <p class="text-gray-900 whitespace-no-wrap">
+                                                {{ $seance->heure_debut }}
+                                            </p>
+                                        </td>
+                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                            <p class="text-gray-900 whitespace-no-wrap">
+                                                {{ $seance->heure_fin }}
+                                            </p>
+                                        </td>
+                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                            <p class="text-gray-900 whitespace-no-wrap">
+                                                ????????
+                                            </p>
+                                        </td>
 
-                        </tr>
-                        @endif
-                    @endforeach
+                                    </tr>                           
+                                     @endif
+                                @endforeach
+                        @endforeach
 
 
                     </tbody>
