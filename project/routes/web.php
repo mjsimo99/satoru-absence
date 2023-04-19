@@ -12,7 +12,9 @@ use App\Http\Controllers\adminModulController;
 use App\Http\Livewire\AdminModuleList;
 use App\Http\Controllers\affectController;
 use App\Http\Controllers\TeacherController;
-
+use App\Http\Controllers\scienceController;
+use App\Http\Controllers\absenceController;
+use App\Http\Controllers\teacherabsencefilterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,13 +37,21 @@ Route::post('/adminStudent/{id}/status', [adminStudentController::class, 'update
 
 Route::resource('adminModul', adminModulController::class);
 
+Route::resource('absence', absenceController::class);
+Route::match(['get', 'post'], '/teacher/absences/filter', [absenceController::class, 'filterByCne'])->name('teacher.absences.filter');
 
-Route::resource('affects', affectController::class);
+
+// Route::resource('affects', affectController::class);
 // Route::resource('teachers', TeacherController::class);
 
 
+Route::resource('science', scienceController::class);
+
+Route::resource('absenceteacher', teacherabsencefilterController::class);
 
 
+
+Route::get('/teacher/absence', [teacherabsencefilterController::class, 'search'])->name('teacher.absence.search');
 
 
 

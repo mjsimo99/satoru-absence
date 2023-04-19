@@ -3,21 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Affect;
-use App\Models\teacher;
+use App\Models\seances;
 
-class affectController extends Controller
+class scienceController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    //     public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
     public function index()
     {
-   
+        $sciences = seances::all();
+        return view('teachers.index', compact('sciences'));
     }
 
     /**

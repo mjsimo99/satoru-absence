@@ -7,8 +7,10 @@
 
     <title>ABSENCE MG</title>
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/1208/1208268.png?w=826&t=st=1680617165~exp=1680617765~hmac=2fc4a4b3fc54db2b0080379afa8329840c56bbb404d9cdb945acf5d026fbcfb3">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+    
     @vite('resources/css/app.css')
+    @vite('resources/js/app.js')
 </head>
 
 <body>

@@ -111,15 +111,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($affects as $affect)
-                            @foreach ($affect->module->seances as $seance)
-                                @if ($affect->id_user == Auth::user()->id)
+                        @foreach ($sciences as $science)
                                     <tr>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                             <div class="flex items-center">
                                                 <div class="ml-3">
                                                     <p class="text-gray-900 whitespace-no-wrap">
-                                                        {{ $affect->module->name_modul }}
+                                                        {{ $science->module->name_modul }}
 
 
                                                     </p>
@@ -127,27 +125,26 @@
                                             </div>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                            <p class="text-gray-900 whitespace-no-wrap">{{ $seance->date_seance }}</p>
+                                            <p class="text-gray-900 whitespace-no-wrap">{{ $science->date_seance }}</p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                             <p class="text-gray-900 whitespace-no-wrap">
-                                                {{ $seance->heure_debut }}
+                                                {{ $science->heure_debut }}
                                             </p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                             <p class="text-gray-900 whitespace-no-wrap">
-                                                {{ $seance->heure_fin }}
+                                                {{ $science->heure_fin }}
                                             </p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                             <p class="text-gray-900 whitespace-no-wrap">
-                                                ????????
+                                                {{ $science->type_seance }}
                                             </p>
                                         </td>
 
                                     </tr>                           
-                                     @endif
-                                @endforeach
+
                         @endforeach
 
 
