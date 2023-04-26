@@ -17,20 +17,27 @@
 <!-- component -->
 <div>
     <div class="rounded-tl-3xl rounded-tr-3xl overflow-hidden shadow-xl max-w-md my-3 bg-white-500 mx-auto mt-10">
-        <img src="https://w0.peakpx.com/wallpaper/666/961/HD-wallpaper-anime-jujutsu-kaisen-satoru-gojo.jpg" class="w-full h-[190px]" />
+        <img src="https://intranet.youcode.ma/src/img/classrooms/29.jpg" class="w-full h-[190px]" />
         <div class="flex justify-center items-center -mt-8 w-[100px] mx-auto">
-          <img src="https://i.pinimg.com/originals/7a/30/f3/7a30f3c1af0844b1e6b6c51f674db909.jpg" class="rounded-full border-solid border-white border-2 -mt-3">		
+          <img src="{{ auth()->user()->student->photo_etu }}" class="rounded-full border-solid border-white border-2 -mt-3">		
         </div>
-        <div class="text-center px-3 pb-6 pt-2 ">
+        <div class="text-center px-3 pb-4 pt-2 ">
           <p class="text-sm bold font-sans text-black ">{{ auth()->user()->student->nom_etu }} {{ auth()->user()->student->prenom_etu }}</p>
           <p class="mt-2 font-sans font-light text-black">{{ auth()->user()->email }}</p>
+        </div>
+        <div id="additional-info" class="hidden text-center px-3 pb-6 pt-2">
+            <p class="mt-2 font-sans font-light text-black">{{ auth()->user()->student->adresse_etu }}</p>
+            <p class="mt-2 font-sans font-light text-black">{{ auth()->user()->student->dateN_etu }}</p>
+            <p class="mt-2 font-sans font-light text-black">{{ auth()->user()->student->cne }}</p>
+            <p class="mt-2 font-sans font-light text-black">{{ auth()->user()->student->phone_etu }}</p>
+            <p class="mt-2 font-sans font-light text-black">{{ auth()->user()->student->villeN_etu }}</p>
+  
         </div>
         <div class="flex justify-center pb-3 text-white">
           <button class="w-36 h-10 bg-gray-900 rounded-full text-white hover:bg-gray-700" onclick="toggleCard()">More information</button>
         </div>
-        <div id="additional-info" class="hidden text-center px-3 pb-6 pt-2">
-          <p class="mt-2 font-sans font-light text-black">Additional information goes here...</p>
-        </div>
+        
+
       </div>
       
       <script>

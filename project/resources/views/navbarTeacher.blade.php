@@ -60,22 +60,7 @@
                 
             </nav>
             <div class="py-2 flex flex-row items-center justify-between">
-                <!-- This is an example component -->
-                
-                <!-- component -->
-                {{-- <main class="flex w-full items-center justify-center mt-1"> --}}
-                    {{-- <!-- component -->
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
 
-                        <button type="submit" class="group rounded-2xl h-12 w-40 bg-blue-500 font-bold text-lg text-white relative overflow-hidden">
-                            Logout!
-                            <div class="absolute duration-300 inset-0 w-full h-full transition-all scale-0 group-hover:scale-100 group-hover:bg-white/30 rounded-2xl">
-                            </div>
-                        </button>
-                    </form> --}}
-
-                {{-- </main> --}}
 
                 <div class="flex items-center md:order-2">
                     <button type="button" class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
