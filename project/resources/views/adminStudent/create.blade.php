@@ -21,7 +21,7 @@
 
 
                 
-        <form method="POST" action="{{ route('adminStudent.store') }}" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <form method="POST" action="{{ route('adminStudent.store') }}" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" enctype="multipart/form-data">
             @csrf
             <h1 class="text-gray-800 font-bold text-2xl mb-1 text-center">Hello Admin!</h1>
             <p class="text-sm font-normal text-gray-600 mb-8 text-center">Welcome Back</p>
@@ -47,7 +47,7 @@
             <div class="flex flex-col w-1/2">
                 <label for="role" class="block font-medium mb-2">Role</label>
                 <select name="role" id="role" class="w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required>
-                    <option value="admin">Student</option>
+                    <option value="Student">Student</option>
                 </select>
             </div>
 

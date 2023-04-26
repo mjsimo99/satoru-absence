@@ -24,7 +24,7 @@
 </div>
 
 
-<div class="flex justify-center mt-[50px]">
+<div class="flex justify-center mt-[50px] change">
     <a href="{{ route('admin.index')}} " class="mx-5 bg-CustomBlue font-bold py-2 px-4 rounded">Admin</a>
     <a href="{{ route('adminTeacher.index')}} " class="mx-5 bg-CustomBlue font-bold py-2 px-4 rounded">Teacher</a>
     <a href="{{ route('adminStudent.index')}}" class="mx-5 bg-CustomBlue font-bold py-2 px-4 rounded">Student</a>
@@ -98,11 +98,38 @@
 
             </div>
             <div class="bg-CustomWhite mt-5 p-4 w-[214px] mx-auto mt-20 rounded-xl">
-                <a href="#" class="text-4xl font-bold px-4 py-2">Downlad</a>
+                <a href="#" onclick="downloadCsv('modul_list.csv')" class="text-4xl font-bold px-4 py-2">Downlad</a>
             </div>
         </div>
     </div>
 </div>
+<script>
+    function downloadCsv(filename) {
+      // Retrieve the table element
+      const table = document.querySelector('table');
+  
+      // Create a new CSV file
+      let csv = 'Id, Module Name\n';
+  
+      // Iterate over each row in the table
+      table.querySelectorAll('tbody tr').forEach((row) => {
+        // Extract the cell data for each row
+        const id = row.querySelector('td:nth-child(1)').innerText;
+        const moduleName = row.querySelector('td:nth-child(2)').innerText;
+  
+        // Append the row data to the CSV string
+        csv += `"${id}", "${moduleName}"\n`;
+      });
+  
+      // Create a download link for the CSV file
+      const downloadLink = document.createElement('a');
+      downloadLink.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+      downloadLink.download = 'module_list.csv';
+  
+      // Trigger the download link
+      downloadLink.click();
+    }
+  </script>
 
 @livewireScripts
 

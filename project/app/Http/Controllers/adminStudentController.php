@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\student;
 use App\Models\User;
 use SNMP;
+use Illuminate\Support\Facades\Storage;
+
 
 class adminStudentController extends Controller
 {
@@ -49,10 +51,15 @@ class adminStudentController extends Controller
             'villeN_etu' => $request->input('villeN_etu'),
             'ville_etu' => $request->input('ville_etu'),
             'adresse_etu' => $request->input('adresse_etu'),
-            'photo_etu' => $request->input('photo_etu'),
+            'photo_etu' => null,
+
             'email_etu' => $request->input('email_etu'),
             'phone_etu' => $request->input('phone_etu'),
         ]);
+        if($request->hasFile('photo_etu')){
+            $path = $request->file('photo_etu')->store('public/student_photos');
+            $student->photo_etu = Storage::url($path); // store file path in database
+        }
 
         $user->student()->save($student);
         return redirect()->route('adminStudent.index');
@@ -88,9 +95,22 @@ class adminStudentController extends Controller
         $student->villeN_etu = $request->input('villeN_etu');
         $student->ville_etu = $request->input('ville_etu');
         $student->adresse_etu = $request->input('adresse_etu');
-        $student->photo_etu = $request->input('photo_etu');
         $student->email_etu = $request->input('email_etu');
         $student->phone_etu = $request->input('phone_etu');
+    
+        if($request->hasFile('photo_etu')){
+            // delete old image
+            if($student->photo_etu != null){
+                Storage::delete(str_replace('/storage', 'public', $student->photo_etu));
+            }
+            // store new image
+            $path = $request->file('photo_etu')->store('public/student_photos');
+            $student->photo_etu = Storage::url($path); // store file path in database
+        } else {
+            // keep old image
+            $student->photo_etu = $student->photo_etu;
+        }
+        
         $student->save();
         
         $user = User::find($id);
@@ -99,8 +119,10 @@ class adminStudentController extends Controller
         $user->password = bcrypt($request->input('password'));
         // $user->role = $request->input('role');
         $user->save();
+        
         return redirect()->route('adminStudent.index');
     }
+    
     public function updateStatus(Request $request, string $id)
     {
         $user = User::find($id);

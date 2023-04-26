@@ -47,7 +47,7 @@
                 <div class="mb-4">
                     <label for="role" class="block font-medium mb-2">Role</label>
                     <select name="role" id="role" class="w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required>
-                        <option value="admin">Admin</option>
+                        <option value="Admin">Admin</option>
                     </select>
                     @error('role')
                         <div class="text-red-500">{{ $message }}</div>

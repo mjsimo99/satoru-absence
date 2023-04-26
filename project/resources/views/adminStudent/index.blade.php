@@ -11,7 +11,7 @@
 </div>
 
 
-<div class="flex justify-center mt-[50px]">
+<div class="flex justify-center mt-[50px] change">
     <a href="{{ route('admin.index')}} " class="mx-5 bg-CustomBlue font-bold py-2 px-4 rounded">Admin</a>
     <a href="{{ route('adminTeacher.index')}} " class="mx-5 bg-CustomBlue font-bold py-2 px-4 rounded">Teacher</a>
     <a href="{{ route('adminStudent.index')}}" class="mx-5 bg-CustomBlue font-bold py-2 px-4 rounded">Student</a>
@@ -82,8 +82,7 @@
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                 <div class="flex items-center">
                                     <div class="flex-shrink-0 w-10 h-10">
-                                        <img class="w-full h-full rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80" alt="" />
-                                    </div>
+                                        <img src="{{ asset($student->photo_etu) }}" alt="Student Photo">                                    </div>
                                     <div class="ml-3">
                                         <p class="text-gray-900 whitespace-no-wrap">
                                             {{$student->user->name}}
@@ -199,11 +198,48 @@
 
             </div>
             <div class="bg-CustomWhite mt-5 p-4 w-[214px] mx-auto mt-20 rounded-xl">
-                <a href="#" class="text-4xl font-bold px-4 py-2">Downlad</a>
-            </div>
+                <a href="#" onclick="downloadCsv('student_list.csv')" class="text-4xl font-bold px-4 py-2">Downlad</a>
+                </div>
         </div>
     </div>
 </div>
+<script>
+    function downloadCsv(filename) {
+        //retrieve the table element
+        const table = document.querySelector('table');
+        //create a new csv file
+        let csv = "User, FullName, CNE, DateOfBirth, CityOfBirth, CityOfResidence, Address, Email, Phone Number\n";
+
+        // Iterate over each row in the table
+
+        table.querySelectorAll('tbody tr').forEach((row) => {
+        // Extract the cell data for each row
+        const User = row.querySelector('td:nth-child(1)').innerText;
+        const FullName = row.querySelector('td:nth-child(2)').innerText;
+        const CNE = row.querySelector('td:nth-child(3)').innerText;
+        const DateOfBirth = row.querySelector('td:nth-child(4)').innerText;
+        const CityOfBirth = row.querySelector('td:nth-child(5)').innerText;
+        const CityOfResidence = row.querySelector('td:nth-child(6)').innerText;
+        const Address = row.querySelector('td:nth-child(7)').innerText;
+        const Email = row.querySelector('td:nth-child(8)').innerText;
+        const Phone = row.querySelector('td:nth-child(9)').innerText;
+
+        // Append the row data to the CSV string
+        csv += `"${User}", "${FullName}", "${CNE}", "${DateOfBirth}", "${CityOfBirth}", "${CityOfResidence}", "${Address}", "${Email}", "${Phone}"\n`;
+        });
+
+        // Create a download link for the CSV file
+        const downloadLink = document.createElement('a');
+        downloadLink.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+        downloadLink.download = filename;
+
+        // Trigger the download link
+        downloadLink.click();
+    }
+</script>
+
+
+
 
 
 

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\teacher;
 use Tests\TestCase;
+use Illuminate\Support\Facades\Storage;
+
 
 class adminTeacherController extends Controller
 {
@@ -47,10 +49,14 @@ class adminTeacherController extends Controller
             'prenom_ens' => $request->input('prenom_ens'),
             'adress_ens' => $request->input('adress_ens'),
             'ville_ens' => $request->input('ville_ens'),
-            'photo_ens' => $request->input('photo_ens'),
+            'photo_ens' => null,
             'email_ens' => $request->input('email_ens'),
             'phone_ens' => $request->input('phone_ens'),
         ]);
+        if ($request->hasFile('photo_ens')) {
+            $path = $request->file('photo_ens')->store('public/teacher_photos');
+            $teacher->photo_ens = Storage::url($path); // store file path in database
+        }
         $user->teacher()->save($teacher);
         
         return redirect()->route('adminTeacher.index');
@@ -79,26 +85,38 @@ class adminTeacherController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
-        $teacher = teacher::find($id);
-        $teacher->nom_ens = $request->input('nom_ens');
-        $teacher->prenom_ens = $request->input('prenom_ens');
-        $teacher->adress_ens = $request->input('adress_ens');
-        $teacher->ville_ens = $request->input('ville_ens');
-        $teacher->photo_ens = $request->input('photo_ens');
-        $teacher->email_ens = $request->input('email_ens');
-        $teacher->phone_ens = $request->input('phone_ens');
-        $teacher->save();
+{
+    $teacher = teacher::find($id);
+    $teacher->nom_ens = $request->input('nom_ens');
+    $teacher->prenom_ens = $request->input('prenom_ens');
+    $teacher->adress_ens = $request->input('adress_ens');
+    $teacher->ville_ens = $request->input('ville_ens');
+    $teacher->email_ens = $request->input('email_ens');
+    $teacher->phone_ens = $request->input('phone_ens');
 
-        $user = User::find($id);
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->password = bcrypt($request->input('password'));
-        // $user->role = $request->input('role');
-        $user->save();
-
-        return redirect()->route('adminTeacher.index');
+    if ($request->hasFile('photo_ens')) {
+        // delete old image
+        if ($teacher->photo_ens) {
+            Storage::delete('public/teacher_photos', $teacher->photo_ens->hashName());
+        }
+        // store new image
+        $path = $request->file('photo_ens')->store('public/teacher_photos');
+        $teacher->photo_ens = Storage::url($path); // store file path in database
+    } else {
+        // keep old image
+        $teacher->photo_ens = $teacher->photo_ens;
     }
+    $teacher->save();
+
+    $user = User::find($id);
+    $user->name = $request->input('name');
+    $user->email = $request->input('email');
+    $user->password = bcrypt($request->input('password'));
+    // $user->role = $request->input('role');
+    $user->save();
+
+    return redirect()->route('adminTeacher.index');
+}
     public function updateStatus(Request $request, string $id)
     {
         $user = User::find($id);

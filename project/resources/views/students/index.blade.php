@@ -1,8 +1,7 @@
 @include('navbarStudent')
 
 
-{{-- @if(auth()->check()) --}}
-{{-- @endif --}}
+
 
 
   
@@ -12,10 +11,9 @@
 
 <div class="flex flex-col items-center justify-center mt-20">
     <h1 class="text-3xl font-bold text-gray-800">
-        Your Profile Mohamed !! 
+        Your Profile {{ auth()->user()->student->nom_etu }} !! 
     </h1>
 </div>
-@if(auth()->user()->student )
 <!-- component -->
 <div>
     <div class="rounded-tl-3xl rounded-tr-3xl overflow-hidden shadow-xl max-w-md my-3 bg-white-500 mx-auto mt-10">
@@ -23,8 +21,8 @@
         <div class="flex justify-center items-center -mt-8 w-[100px] mx-auto">
           <img src="https://i.pinimg.com/originals/7a/30/f3/7a30f3c1af0844b1e6b6c51f674db909.jpg" class="rounded-full border-solid border-white border-2 -mt-3">		
         </div>
-        <div class="text-center px-3 pb-6 pt-2">
-          <p class="text-sm bold font-sans text-black">{{ auth()->user()->student->nom_etu }} {{ auth()->user()->student->prenom_etu }}</p>
+        <div class="text-center px-3 pb-6 pt-2 ">
+          <p class="text-sm bold font-sans text-black ">{{ auth()->user()->student->nom_etu }} {{ auth()->user()->student->prenom_etu }}</p>
           <p class="mt-2 font-sans font-light text-black">{{ auth()->user()->email }}</p>
         </div>
         <div class="flex justify-center pb-3 text-white">
@@ -45,7 +43,7 @@
       
     
     <div class="flex flex-col items-center justify-center mt-16 mb-16">
-        <h1 class="text-3xl font-bold text-gray-800">
+        <h1 class="text-3xl font-bold text-gray-800 title2">
             Absence INFO
         </h1>
     </div>
@@ -83,8 +81,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach(auth()->user()->student->seances as $seance)
-                @foreach($seance->absence as $absence)
+                @foreach(auth()->user()->absences as $absence)
 
 
                 <tr>
@@ -93,33 +90,33 @@
                             
                             <div class="ml-3">
                                 <p class="text-gray-900 whitespace-no-wrap">
-                                    {{ $seance->module->name_modul }}
+                                    {{ $absence->seance->module->name_modul }}
                                 </p>
                             </div>
                     </td>
                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        <p class="text-gray-900 whitespace-no-wrap">{{ $seance->date_seance }}
+                        <p class="text-gray-900 whitespace-no-wrap">
+                            {{ $absence->seance->date_seance }}
 
                         </p>
                     </td>
                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <p class="text-gray-900 whitespace-no-wrap">
-                            {{ $seance->heure_debut }}
+                            {{ $absence->seance->heure_debut }}
                         </p>
                     </td>
                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <p class="text-gray-900 whitespace-no-wrap">
-                            {{ $seance->heure_fin }}
+                            {{ $absence->seance->heure_fin }}
                         </p>
                     </td>
                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <p class="text-gray-900 whitespace-no-wrap">
-                            {{ $seance->type_seance }}
+                            {{ $absence->seance->type_seance }}
                         </p>
                     </td>
                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <p class="text-gray-900 whitespace-no-wrap">
-
                             {{ $absence->justify }}
                                 
                         </p>
@@ -130,7 +127,6 @@
                         </p>
                     </td>
                 </tr>
-                @endforeach
 
                 @endforeach
             </tbody>
@@ -140,4 +136,3 @@
     
 
 </div>
-@endif

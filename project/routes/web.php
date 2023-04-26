@@ -15,6 +15,7 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\scienceController;
 use App\Http\Controllers\absenceController;
 use App\Http\Controllers\teacherabsencefilterController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,57 +27,8 @@ use App\Http\Controllers\teacherabsencefilterController;
 |
 */
 
-Route::resource('admin', adminController::class);
-Route::post('/admin/{id}/status', [AdminController::class, 'updateStatus'])->name('admin.updateStatus');
-
-Route::resource('adminTeacher', adminTeacherController::class);
-Route::post('/adminTeacher/{id}/status', [adminTeacherController::class, 'updateStatus'])->name('adminTeacher.updateStatus');
-
-Route::resource('adminStudent', adminStudentController::class);
-Route::post('/adminStudent/{id}/status', [adminStudentController::class, 'updateStatus'])->name('adminStudent.updateStatus');
-
-Route::resource('adminModul', adminModulController::class);
-
-Route::resource('absence', absenceController::class);
-Route::match(['get', 'post'], '/teacher/absences/filter', [absenceController::class, 'filterByCne'])->name('teacher.absences.filter');
-
-
-// Route::resource('affects', affectController::class);
-// Route::resource('teachers', TeacherController::class);
-
-
-Route::resource('science', scienceController::class);
-
-Route::resource('absenceteacher', teacherabsencefilterController::class);
-
-
-
-Route::get('/teacher/absence', [teacherabsencefilterController::class, 'search'])->name('teacher.absence.search');
-
-
-
-
 
 Route::get('/admin-module-list', AdminModuleList::class);
-
-
-
-// Route::resource('students', studentController::class);
-
-
-
-Route::get('/students', function () {
-    return view('students.index');
-});
-
-
-
-// });
-
-Route::get('/tabsence', function () {
-    return view('teachers.absence');
-});
-
 Route::get('/users', [UserController::class, 'index']);
 
 Route::get('/dashboard', function () {
@@ -89,7 +41,52 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+
+Route::group(['middleware' => ['auth', 'role:Admin']], function () {
+    Route::resource('admin', adminController::class);
+    Route::post('/admin/{id}/status', [AdminController::class, 'updateStatus'])->name('admin.updateStatus');
+
+    Route::resource('adminTeacher', adminTeacherController::class);
+    Route::post('/adminTeacher/{id}/status', [adminTeacherController::class, 'updateStatus'])->name('adminTeacher.updateStatus');
+
+    Route::resource('adminStudent', adminStudentController::class);
+    Route::post('/adminStudent/{id}/status', [adminStudentController::class, 'updateStatus'])->name('adminStudent.updateStatus');
+
+    Route::resource('adminModul', adminModulController::class);
+});
 
 
 
+Route::group(['middleware' => ['auth', 'role:Student']], function () {
+    Route::get('/students', function () {
+        return view('students.index');
+    })->name('students.index');
+});
+
+
+Route::group(['middleware' => ['auth', 'role:Teacher']], function () {
+    Route::resource('absence', absenceController::class);
+    Route::match(['get', 'post'], '/teacher/absences/filter', [absenceController::class, 'filterByCne'])->name('teacher.absences.filter');
+
+    // Route::get('/science', [scienceController::class, 'index'])->name('science');
+    Route::resource('science', scienceController::class);
+
+    Route::post('science/storeStudy', [scienceController::class, 'storeStudy'])->name('science.storeStudy');
+
+    Route::resource('absenceteacher', teacherabsencefilterController::class);
+
+
+
+    Route::get('/teacher/absence', [teacherabsencefilterController::class, 'search'])->name('teacher.absence.search');
+});
+
+// Route::middleware(['auth.redirect'])->group(function () {
+//     Route::get('/', function () {
+//         return view('auth.login');
+//     });
+// });
+
+// Route::fallback(function () {
+//     abort(404);
+// });
+require __DIR__ . '/auth.php';

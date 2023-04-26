@@ -25,8 +25,8 @@
             @csrf
             <div class="flex mt-[50px]">
                 <div class="flex flex-col">
-                    <label for="cne" class="text-lg font-semibold mb-2">Filter By CNE:</label>
-                    <select id="cne" name="cne" class="border border-gray-400 rounded-lg py-2 px-3">
+                    <label for="cne" class="text-lg font-semibold mb-2 filter">Filter By CNE:</label>
+                    <select id="cne" name="cne" class="border border-gray-400 rounded-lg py-2 px-3 mr-2">
                         <option value="">-- Select CNE --</option>
                         @foreach ($absences as $etudiant)
                             <option value="{{ $etudiant->cne }}">{{ $etudiant->cne }} </option>
@@ -57,39 +57,39 @@
                     <thead>
                         <tr>
                             <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                class="px-5 py-3 border-b-2 border-gray-200  text-left text-xs font-semibold text-gray-600 uppercase tracking-wider" style="background-color: aliceblue;">
                                 Modules
                             </th>
                             <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                class="px-5 py-3 border-b-2 border-gray-200  text-left text-xs font-semibold text-gray-600 uppercase tracking-wider" style="background-color: aliceblue;">
                                 cne
                             </th>
                             <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                class="px-5 py-3 border-b-2 border-gray-200  text-left text-xs font-semibold text-gray-600 uppercase tracking-wider" style="background-color: aliceblue;">
                                 etudiant
                             </th>
                             <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                class="px-5 py-3 border-b-2 border-gray-200  text-left text-xs font-semibold text-gray-600 uppercase tracking-wider" style="background-color: aliceblue;">
                                 justify
                             </th>
                             <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                class="px-5 py-3 border-b-2 border-gray-200  text-left text-xs font-semibold text-gray-600 uppercase tracking-wider" style="background-color: aliceblue;">
                                 comm_abs
                             </th>
                             <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                class="px-5 py-3 border-b-2 border-gray-200  text-left text-xs font-semibold text-gray-600 uppercase tracking-wider" style="background-color: aliceblue;">
                                 date_seance
                             </th>
                             <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                class="px-5 py-3 border-b-2 border-gray-200  text-left text-xs font-semibold text-gray-600 uppercase tracking-wider" style="background-color: aliceblue;">
                                 heure_debut
                             </th>
                             <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                class="px-5 py-3 border-b-2 border-gray-200  text-left text-xs font-semibold text-gray-600 uppercase tracking-wider" style="background-color: aliceblue;">
                                 heure_fin
                             </th>
                             <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                class="px-5 py-3 border-b-2 border-gray-200  text-left text-xs font-semibold text-gray-600 uppercase tracking-wider" style="background-color: aliceblue;">
                                 type_seance
                             </th>
 
@@ -161,14 +161,47 @@
 
             </div>
             <div class="bg-CustomWhite mt-5 p-4 w-[214px] mx-auto mt-20 rounded-xl">
-                <a href="#" class="text-4xl font-bold px-4 py-2">Downlad</a>
+                <a href="#" onclick="downloadCsv('absence_list.csv')" class="text-4xl font-bold px-4 py-2">Downlad</a>
             </div>
         </div>
     </div>
 </div>
+<script >
+     function downloadCsv(filename) {
+    // Retrieve the table element
+    const table = document.querySelector('table');
+
+    // Create a new CSV file
+    let csv = 'Modules, CNE, Etudiant, Justify, Comm_abs, Date_seance, Heure_debut, Heure_fin, Type_seance\n';
+
+    // Iterate over each row in the table
+    table.querySelectorAll('tbody tr').forEach((row) => {
+      // Extract the cell data for each row
+        const Modules = row.querySelector('td:nth-child(1)').innerText;
+        const CNE = row.querySelector('td:nth-child(2)').innerText;
+        const Etudiant = row.querySelector('td:nth-child(3)').innerText;
+        const Justify = row.querySelector('td:nth-child(4)').innerText;
+        const Comm_abs = row.querySelector('td:nth-child(5)').innerText;
+        const Date_seance = row.querySelector('td:nth-child(6)').innerText;
+        const Heure_debut = row.querySelector('td:nth-child(7)').innerText;
+        const Heure_fin = row.querySelector('td:nth-child(8)').innerText;
+        const Type_seance = row.querySelector('td:nth-child(9)').innerText;
 
 
 
+      // Append the row data to the CSV string
+      csv += `"${Modules}","${CNE}","${Etudiant}","${Justify}","${Comm_abs}","${Date_seance}","${Heure_debut}","${Heure_fin}","${Type_seance}"\n`;
+    });
+
+    // Create a download link for the CSV file
+    const downloadLink = document.createElement('a');
+    downloadLink.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+    downloadLink.download = filename;
+
+    // Trigger the download link
+    downloadLink.click();
+  }
+</script>
 </body>
 
 </html>

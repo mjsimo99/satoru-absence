@@ -1,6 +1,10 @@
 @include('navbarAdmin')
 
 
+
+
+  
+
 @livewire('my-component')
 
 <div class="bg-CustomWhite mt-5 p-4 w-[420px] mx-auto mt-20 rounded-xl">
@@ -8,7 +12,7 @@
 </div>
 
 
-<div class="flex justify-center mt-[50px]">
+<div class="flex justify-center mt-[50px] change">
     <a href="{{ route('admin.index')}} " class="mx-5 bg-CustomBlue font-bold py-2 px-4 rounded">Admin</a>
     <a href="{{ route('adminTeacher.index')}} " class="mx-5 bg-CustomBlue font-bold py-2 px-4 rounded">Teacher</a>
     <a href="{{ route('adminStudent.index')}}" class="mx-5 bg-CustomBlue font-bold py-2 px-4 rounded">Student</a>
@@ -62,7 +66,7 @@
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                 <div class="flex items-center">
                                     <div class="flex-shrink-0 w-10 h-10">
-                                        <img class="w-full h-full rounded-full" src="https://i.pinimg.com/564x/8e/de/53/8ede538fcf75a0a1bd812810edb50cb7.jpg" alt="" />
+                                        <img class="w-full h-full rounded-full" src="   https://cdn-icons-png.flaticon.com/512/6024/6024190.png" alt="" />
                                     </div>
                                     <div class="ml-3">
                                         <p class="text-gray-900 whitespace-no-wrap">
@@ -163,7 +167,7 @@
       // Extract the cell data for each row
       const user = row.querySelector('td:nth-child(1)').innerText;
       const fullName = row.querySelector('td:nth-child(2)').innerText;
-      const email = row.querySelector('td:nth-child(3)').innerText;
+      const email = row.querySelec  tor('td:nth-child(3)').innerText;
       const access = row.querySelector('td:nth-child(4)').innerText;
       const role = row.querySelector('td:nth-child(5)').innerText;
 
@@ -179,6 +183,12 @@
     // Trigger the download link
     downloadLink.click();
   }
+</script>
+
+
+
+<script>
+
 </script>
 </body>
 

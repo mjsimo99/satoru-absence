@@ -12,8 +12,10 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                'CustomWhite': '#F7FAFC',
+                'CustomWhite': 'aliceblue',
+                'orange': '#FFA500',
               },
+              
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
                 inter: ['Inter', ...defaultTheme.fontFamily.sans],

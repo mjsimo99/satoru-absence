@@ -4,7 +4,17 @@
 
 
 
+@if (session('success'))
+    <script>
+        swal("Good job!", "{{ session('success') }}", "success")
+    </script>
+@endif
 
+@if (session('error'))
+    <script>
+        swal("Oops...!", "{{ session('error') }}", "error")
+    </script>
+@endif
 
 
 <div class="w-screen  mt-20">
@@ -12,7 +22,7 @@
         <form method="GET" action="{{ route('teacher.absence.search') }}">
             <div class="flex mb-6">
 
-                <div class="flex border rounded items-center p-2 mx-2">
+                <div class="flex border rounded items-center p-2 mx-2 search1">
                     <svg class="fill-current text-gray-800 mr-2 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                         width="24" height="24">
                         <path class="heroicon-ui"
@@ -22,7 +32,7 @@
                         class="border-0 max-w-full focus:outline-none text-gray-700" value="{{ request('date') }}">
                 </div>
 
-                <div class="flex border rounded  items-center p-2 mx-2">
+                <div class="flex border rounded  items-center p-2 mx-2 search2">
                     <svg class="fill-current text-gray-800 mr-2 w-5" xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24" width="24" height="24">
                         <path class="heroicon-ui"
@@ -32,7 +42,7 @@
                         class="border-0 max-w-full focus:outline-none text-gray-700"
                         value="{{ request('start_time') }}">
                 </div>
-                <div class="flex border rounded items-center p-2 mx-2">
+                <div class="flex border rounded items-center p-2 mx-2 search3">
                     <svg class="fill-current text-gray-800 mr-2 w-5" xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24" width="24" height="24">
                         <path class="heroicon-ui"
@@ -67,23 +77,23 @@
                     <thead>
                         <tr>
                             <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                class="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider" style="background-color: aliceblue;">
                                 Modules
                             </th>
                             <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                class="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider" style="background-color: aliceblue;">
                                 Class Time
                             </th>
                             <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                class="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider" style="background-color: aliceblue;">
                                 Start Time
                             </th>
                             <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                class="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider" style="background-color: aliceblue;">
                                 End Time
                             </th>
                             <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                class="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider" style="background-color: aliceblue;">
                                 type seance
                             </th>
 
@@ -135,7 +145,7 @@
 
 
 <div class="ml-64 mt-[50px]">
-    <h3 class="text-4xl font-bold px-4 py-2">Students Liste</h3>
+    <h3 class="text-4xl font-bold px-4 py-2 sience">Students Liste</h3>
 </div>
 
 <!-- component -->
@@ -149,23 +159,23 @@
                     <thead>
                         <tr>
                             <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                class="px-5 py-3 border-b-2 border-gray-2 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider" style="background-color: aliceblue;">
                                 CNE
                             </th>
                             <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                class="px-5 py-3 border-b-2 border-gray-2 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"  style="background-color: aliceblue;">
                                 First Name
                             </th>
                             <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                class="px-5 py-3 border-b-2 border-gray-2 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider" style="background-color: aliceblue;">
                                 Last Name
                             </th>
                             <th
-                                class="px-5 text-center py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                class="px-5 text-center py-3 border-b-2 border-gray-2 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider" style="background-color: aliceblue;">
                                 Affect Absence
                             </th>
                             <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                class="px-5 py-3 border-b-2 border-gray-2 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider" style="background-color: aliceblue;">
                                 Absence affecter ?
                             </th>
 
@@ -174,21 +184,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if (session('success'))
-                            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative"
-                                role="alert">
-                                <strong class="font-bold">Succès!</strong>
-                                <span class="block sm:inline">{{ session('success') }}</span>
-                                <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
-                                    <svg class="fill-current h-6 w-6 text-green-500" role="button"
-                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                        <title>Close</title>
-                                        <path
-                                            d="M14.348 5.652a.999.999 0 1 0-1.414 1.414L11 8.414l-1.934 1.934a.999.999 0 1 0 1.414 1.414L12.414 10l1.934 1.934a.999.999 0 1 0 1.414-1.414L13.828 10l1.52-1.52a.999.999 0 0 0 0-1.414z" />
-                                    </svg>
-                                </span>
-                            </div>
-                        @endif
+                        
                         @foreach ($students as $student)
                             <tr>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -203,18 +199,18 @@
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     <p class="text-gray-900 whitespace-no-wrap">{{ $student->Fname }}</p>
 
-                                    </p>
+                                    
                                 </td>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     <p class="text-gray-900 whitespace-no-wrap">
                                         {{ $student->Lname }}
                                     </p>
                                 </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">
 
 
-                                    <input type="text" name="student_id" value="{{ $student->student }}">
-                                    <input type="text" name="seance_id" value="{{ $student->seance_id }}">
+                                    <input type="hidden" name="student_id" value="{{ $student->student }}">
+                                    <input type="hidden" name="seance_id" value="{{ $student->seance_id }}">
                                     <button type="button" class="focus:outline-none" data-modal-target="popup-modal"
                                         data-modal-toggle="popup-modal">
                                         <svg class="w-[30px] mx-auto" fill="none" stroke="currentColor"
@@ -292,9 +288,7 @@
                 </table>
 
             </div>
-            <div class="bg-CustomWhite mt-5 p-4 w-[214px] mx-auto mt-20 rounded-xl">
-                <a href="#" class="text-4xl font-bold px-4 py-2">Downlad</a>
-            </div>
+         
         </div>
     </div>
 </div>

@@ -15,8 +15,7 @@ class TeacherController extends Controller
     public function index()
     {
         $teachers = teacher::all();
-        $affects = affect::all();
-        return view('teachers.index', compact('teachers', 'affects'));
+        return view('teachers.index', compact('teachers'));
 
 
     }

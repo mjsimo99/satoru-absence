@@ -19,8 +19,7 @@
     <div class="flex w-full lg:w-1/2 justify-center items-center bg-white space-y-8">
         <div class="w-full px-8 md:px-32 lg:px-24">
 
-            <form method="POST" action="{{ route('adminTeacher.store') }}">
-                @csrf
+            <form method="POST" action="{{ route('adminTeacher.store') }}" enctype="multipart/form-data">                @csrf
                 <h1 class="text-gray-800 font-bold text-2xl mb-1 text-center">Hello Admin!</h1>
                 <p class="text-sm font-normal text-gray-600 mb-8 text-center">Welcome Back</p>
                 
@@ -120,7 +119,7 @@
 
                 <div class="mb-4">
                     <label for="photo_ens" class="block font-medium mb-2">Teacher Photo</label>
-                    <input type="file" name="photo_ens" id="photo_ens" value="{{ old('photo_ens') }}"
+                    <input type="file" name="photo_ens" id="photo_ens"
                         class="w-full border border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                         required>
                     @error('photo_ens')
